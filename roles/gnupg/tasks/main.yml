@@ -18,4 +18,14 @@
     - gpg-agent.conf
 
 - name: Restart gpg-agent
-  command: "sudo -u {{ username }} gpg-connect-agent killagent /bye && sudo -u {{ username }} gpg-connect-agent /bye"
+  become: "{{ username }}"
+  become_method: sudo
+  command: "gpg-connect-agent killagent /bye && gpg-connect-agent /bye"
+
+- name: GPG-stuff needed in environment
+  blockinfile:
+    path: "/home/{{ username }}/.bashrc"
+    marker: "# {mark} GPG-AGENT STUFF FROM ANSIBLE"
+    block: |
+      export SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh
+      export GPG_TTY=$(tty)
