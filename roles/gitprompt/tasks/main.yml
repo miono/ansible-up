@@ -2,14 +2,14 @@
 - name: Copy git-prompt.sh
   copy:
     src: files/git-prompt.sh
-    dest: "/home/{{ username }}/bin/git-prompt.sh"
+    dest: "/usr/local/bin/git-prompt.sh"
     mode: 0755
-    owner: "{{ username }}"
-    group: "{{ username }}"
+    owner: root
+    group: root
 
 - name: Add stuff to .bashrc
   blockinfile:
     path: "/home/{{ username }}/.bashrc"
     block: |
-      source /home/{{ username }}/bin/git-prompt.sh
+      source /usr/local/bin/git-prompt.sh
       export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1)$ '
