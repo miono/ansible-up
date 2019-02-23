@@ -1,11 +1,10 @@
 ---
 - name: Install packages
   apt:
-    name: "{{ item }}"
+    name:
+      - pcscd
+      - scdaemon
     update_cache: yes
-  with_items:
-    - pcscd
-    - scdaemon
 
 - name: Add configuration
   copy:
@@ -16,7 +15,7 @@
     group: "{{ username }}"
   with_items:
     - gpg.conf
-      gpg-agent.conf
+    - gpg-agent.conf
 
 - name: Restart gpg-agent
-  command: "sudo -u {{ username }} gpg-connect-agent killagent /bye && sudo -u {{ username }} gpg-connect-agent /bye
+  command: "sudo -u {{ username }} gpg-connect-agent killagent /bye && sudo -u {{ username }} gpg-connect-agent /bye"
