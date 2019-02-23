@@ -14,13 +14,16 @@
     owner: "{{ username }}"
     group: "{{ username }}"
 
-- name: Create folder for i3blocks configuration
+- name: Create folders for i3blocks configuration and i3blocks-scripts
   file:
-    path: "/home/{{ username }}/.config/i3blocks"
+    path: "/home/{{ username }}/.config/{{ item }}"
     state: directory
     owner: "{{ username }}"
     group: "{{ username }}"
     mode: 0755
+  with_items:
+    - i3blocks
+    - i3/i3blocks
 
 - name: Copy i3blocks configuration
   copy:
