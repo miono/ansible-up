@@ -1,11 +1,10 @@
 ---
 - name: Install i3-packages
   apt:
-    name: "{{ item }}"
-    update_cache: yes
-  with_items:
+    name:
       - i3
       - i3blocks
+    update_cache: yes
 
 - name: Copy i3-configuration
   copy:
