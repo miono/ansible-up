@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  roles:
+    - bashrc
+    - spotify
+    - keymap
+    - i3
+    - gitprompt
+    - gnupg
+    - keepassxc
+#     - vim # Do this one last since I might wan't to add more stuff
+#     - docker
+#     - virtualbox
+#     - thinkpad
+#     - font-rendering
+#     - golang
+#     - vscode (?)

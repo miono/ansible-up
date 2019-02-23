@@ -1,0 +1,10 @@
+---
+- name: Add KeePassXC PPA
+  apt_repository:
+    repo: ppa:phoerious/keepassxc
+
+- name: Install KeePassXC
+  apt:
+    name: keepassxc 
+    update_cache: yes
+    state: latest

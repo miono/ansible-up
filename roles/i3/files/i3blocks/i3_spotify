@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+
+import subprocess
+import time
+from os import environ
+
+color_pause = '#f47983'
+
+def output():
+  artist = subprocess.check_output(["playerctl", "metadata", "xesam:artist"])
+  song = subprocess.check_output(["playerctl", "metadata", "xesam:title"])
+  status = subprocess.check_output(["playerctl", "status"])
+  print artist + ' - ' + song
+  if status != 'Playing\n':
+     print "\n" + color_pause
+
+def control_player(action):
+  subprocess.call(["playerctl", action])
+  time.sleep(0.1)
+  output()
+
+if environ.get('BLOCK_BUTTON') == "1":
+  control_player('play-pause')
+elif environ.get('BLOCK_BUTTON') == "2":
+  control_player('previous')
+elif environ.get('BLOCK_BUTTON') == "3":
+  control_player('next')
+else:
+  output()

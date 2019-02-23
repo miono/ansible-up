@@ -1,0 +1,9 @@
+---
+- name: Copy the se-symbols file to the right place
+  copy:
+     src: files/se
+     dest: /usr/share/X11/xkb/symbols/se
+     backup: yes
+     owner: root
+     group: root
+     mode: 0644

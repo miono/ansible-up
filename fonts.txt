@@ -1,0 +1,7 @@
+Stuff I did:
+-> installed ttf-ubuntu-font-family
+added 99-sharp-fonts-stuff from some link
+
+Ideas:
+https://github.com/adobe/brackets/issues/14290#issuecomment-388161728
+

@@ -1,0 +1,31 @@
+---
+- name: Install i3-packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items:
+      - i3
+      - i3blocks
+
+- name: Copy i3-configuration
+  copy:
+    src: files/i3-config
+    dest: "/home/{{ username }}/.config/i3/config"
+    mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: Copy i3blocks configuration
+  copy:
+    src: files/i3blocks-config
+    dest: "/home/{{ username }}/.config/i3blocks/config"
+    mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: Copy i3blocks utility scripts
+  copy:
+    src: "files/i3blocks/{{ item }}"
+    dest: "/home/{{ username }}/.config/i3/i3blocks/{{ item }}"
+  with_items:
+    - i3_spotify

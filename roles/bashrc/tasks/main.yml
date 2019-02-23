@@ -1,0 +1,5 @@
+---
+- name: Append extra bashrc-stuff
+  blockinfile:
+    path: "/home/{{ username }}/.bashrc"
+    block: "{{ lookup('file', '../files/bashrc')}}"
