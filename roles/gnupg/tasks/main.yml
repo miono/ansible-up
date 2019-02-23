@@ -4,6 +4,7 @@
     name:
       - pcscd
       - scdaemon
+      - gnupg2
     update_cache: yes
 
 - name: Add configuration
