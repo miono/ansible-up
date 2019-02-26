@@ -1,0 +1,19 @@
+---
+- name: Install vim
+  apt:
+    name: vim
+    state: latest
+    update_cache: yes
+
+- name: Get vundle
+  git:
+    repo: "https://github.com/VundleVim/Vundle.vim.git"
+    dest: "/home/{{ username }}/.vim/bundle/Vundle.vim"
+
+- name: Copy .vimrc
+  copy:
+    src: files/vimrc
+    dest: "/home/{{ username }}/.vimrc"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0644

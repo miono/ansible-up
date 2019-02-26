@@ -1,0 +1,57 @@
+" Stuff to get vundle working:
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tomasr/molokai'
+Plugin 'bling/vim-airline'
+Plugin 'Raimondi/delimitMate'
+Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-fugitive'
+Plugin 'fatih/vim-hclfmt'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+call vundle#end()
+filetype plugin indent on
+
+set number
+set bg=dark
+set showcmd
+syntax on
+set wildmenu
+colorscheme molokai
+
+let mapleader = ","
+nmap <leader>v :vsplit $MYVIMRC<CR>
+
+" UltiSnips-modifications to work with YouCompleteMe
+let g:UltiSnipsExpandTrigger = "<c-f>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:go_version_warning = 0
+
+" NERDTree on Ctrl-P
+nmap <c-p> :NERDTreeToggle<CR>
+
+" go stuff
+let g:go_fmt_command = "goimports"
+augroup filetype_go
+  autocmd!
+  autocmd FileType go nmap <leader>d <Plug>(go-def)
+  autocmd FileType go nmap <leader>q <Plug>(go-def-pop)
+augroup END
+
+" yaml stuff
+augroup filetype_yaml
+  autocmd!
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+augroup END
+
+augroup filetype_vim
+  autocmd!
+  autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab
+augroup END

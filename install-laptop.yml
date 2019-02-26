@@ -11,7 +11,9 @@
     - keepassxc
     - font-rendering
     - vscode
-#     - vim # Do this one last since I might wan't to add more stuff
-#     - docker
-#     - virtualbox
-#     - thinkpad
+    - docker
+    - virtualbox
+    - chrome
+    - yubico-repo
+    - vim
+#     - thinkpad-stuff # This should contain some xbindkeys-stuff for volume and shit
