@@ -1,0 +1,23 @@
+Before applying this config you should install the vim-plugin and the vscode-plugin
+
+{
+    "editor.fontSize": 11,
+    "keyboard.dispatch": "keyCode",
+    "vim.handleKeys": {
+            "<C-d>": true,
+            "<C-k>": false
+        },
+    "files.autoSave": "off",
+    "files.autoSaveDelay": 500,
+    "go.autocompleteUnimportedPackages": true,
+    "go.gocodeAutoBuild": true,
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": true,
+    "editor.renderWhitespace": "none",
+    "workbench.editor.enablePreview": false,
+    "breadcrumbs.enabled": true,
+    "files.insertFinalNewline": true,
+    "editor.lineNumbers": "on",
+    "editor.quickSuggestionsDelay": 1
+}  
+

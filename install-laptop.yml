@@ -9,9 +9,9 @@
     - gitprompt
     - gnupg
     - keepassxc
+    - font-rendering
+    - vscode
 #     - vim # Do this one last since I might wan't to add more stuff
 #     - docker
 #     - virtualbox
 #     - thinkpad
-#     - font-rendering
-#     - vscode (?)

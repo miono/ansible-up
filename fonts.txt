@@ -5,3 +5,4 @@ added 99-sharp-fonts-stuff from some link
 Ideas:
 https://github.com/adobe/brackets/issues/14290#issuecomment-388161728
 
+Check if I have cairo installed.

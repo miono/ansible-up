@@ -1,0 +1,24 @@
+---
+- name: Add 99-sharp-fonts.conf
+  copy:
+    src: files/99-sharp-fonts.conf
+    dest: /etc/fonts/conf.avail/99-sharp-fonts.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Link 99-sharp-fonts.conf to conf.d-folder
+  file:
+    state: link
+    src: /etc/fonts/conf.avail/99-sharp-fonts.conf
+    dest: /etc/fonts/conf.d/99-sharp-fonts.conf
+    owner: root
+    group: root
+
+- name: Copy X11resources-conf
+  copy:
+    src: files/sharp-fonts
+    dest: /etc/X11/Xresources/sharp-fonts
+    owner: root
+    group: root
+    mode: 0644
