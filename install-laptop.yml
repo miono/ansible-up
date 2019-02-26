@@ -2,6 +2,7 @@
 - hosts: localhost
   roles:
     - bashrc
+    - golang
     - spotify
     - keymap
     - i3
@@ -13,5 +14,4 @@
 #     - virtualbox
 #     - thinkpad
 #     - font-rendering
-#     - golang
 #     - vscode (?)
