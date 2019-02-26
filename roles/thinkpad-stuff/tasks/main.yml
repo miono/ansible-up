@@ -1,0 +1,8 @@
+---
+- name: Copy the script to switch between laptop only/multimonitor setup
+  copy:
+    src: files/dock
+    dest: /usr/local/bin/dock
+    owner: root
+    group: root
+    mode: 0755
