@@ -13,11 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 7
+#font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -175,41 +175,30 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3blocks
-        font pango:monospace 7
+        # font pango:monospace 8
+	font pango:DejaVu Sans Mono 8
         position top
         colors {
                 background #000000
                 #class                 border       background      text
-                focused_workspace      #f47983      #f47983         #000000
-                active_workspace       #f47983      #f47983         #000000
-                inactive_workspace     #207a88      #207a88         #ffffff
-                statusline #207a88
-                separator #f47983
+                focused_workspace      #709b33      #8cc041         #000000
+                active_workspace       #709b33      #8cc041         #000000
+                inactive_workspace     #224f64      #325f74         #ffffff
+                separator #325f74
+                statusline #8cc041
         }
         tray_padding 0
 }
 
 exec xbindkeys
-exec xinput set-prop "TPPS/2 IBM TrackPoint" "Device Accel Constant Deceleration" 0.3
-exec xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+exec xinput set-prop "ETPS/2 Elantech Touchpad" "Device Enabled" 0
 exec setxkbmap -layout se -option caps:escape
 # exec clipit
 
-
 # class                 border  backgr. text    indicator child_border
-# client.focused          #f47983 #f47983 #000000 #f47983   #f47983
-# client.focused_inactive #207a88 #207a88 #ffffff #207a88   #207a88
-# client.unfocused        #207a88 #207a88 #ffffff #207a88   #207a88
-# client.urgent           #2f343a #900000 #ffffff #900000   #900000
-# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-
-
-
-# class                 border  backgr. text    indicator child_border
-client.focused          #000000 #f47983 #000000 #f47983   #f47983
-client.focused_inactive #000000 #207a88 #ffffff #207a88   #207a88
-client.unfocused        #000000 #207a88 #ffffff #207a88   #207a88
+client.focused          #000000 #709b33 #000000 #f47983   #709b33
+client.focused_inactive #000000 #325f74 #ffffff #325f74   #325f74
+client.unfocused        #000000 #325f74 #ffffff #207a88   #207a88
 client.urgent           #000000 #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
