@@ -1,0 +1,25 @@
+"amixer set 'Master' 2%+"
+    m:0x0 + c:123
+    XF86AudioRaiseVolume
+"amixer set 'Master' 2%-"
+    m:0x0 + c:122
+    XF86AudioLowerVolume
+"amixer -q -D pulse sset Master toggle"
+    m:0x0 + c:121
+    XF86AudioMute
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+    m:0x0 + c:172
+    XF86AudioPlay
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+    m:0x0 + c:171
+    XF86AudioNext
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+    m:0x0 + c:173
+    XF86AudioPrev
+
+"i3lock -u -c 008080"
+    m:0x48 + c:46
+    Alt+Mod4 + l

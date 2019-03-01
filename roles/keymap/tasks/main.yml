@@ -1,4 +1,18 @@
 ---
+- name: Install xbindkeys
+  apt:
+    name: xbindkeys
+    state: latest
+    update_cache: yes
+
+- name: Copy .xbindkeysrc
+  copy:
+    src: files/xbindkeysrc
+    dest: "/home/{{ username }}/.xbindkeysrc"
+    mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
 - name: Copy the se-symbols file to the right place
   copy:
      src: files/se
