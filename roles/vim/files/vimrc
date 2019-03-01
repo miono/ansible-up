@@ -34,8 +34,9 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:go_version_warning = 0
 
-" NERDTree on Ctrl-P
+" NERDTree stuff
 nmap <c-p> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " go stuff
 let g:go_fmt_command = "goimports"
@@ -43,6 +44,7 @@ augroup filetype_go
   autocmd!
   autocmd FileType go nmap <leader>d <Plug>(go-def)
   autocmd FileType go nmap <leader>q <Plug>(go-def-pop)
+  autocmd FileType go setlocal ts=4 sts=4 sw=4
 augroup END
 
 " yaml stuff
@@ -51,6 +53,7 @@ augroup filetype_yaml
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 augroup END
 
+"vim filetype
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal ts=2 sts=2 sw=2 expandtab

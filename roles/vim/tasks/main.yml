@@ -6,6 +6,7 @@
     update_cache: yes
 
 - name: Get vundle
+  become: false
   git:
     repo: "https://github.com/VundleVim/Vundle.vim.git"
     dest: "/home/{{ username }}/.vim/bundle/Vundle.vim"
