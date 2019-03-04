@@ -12,7 +12,7 @@
 - name: Add some stuff to .bashrc to get $PATH and GO111MODULE=on
   blockinfile:
     path: "/home/{{ username }}/.bashrc"
-    marker: "{mark} ANSIBLE-MANAGED GOLANG-STUFF"
+    marker: "# {mark} ANSIBLE-MANAGED GOLANG-STUFF"
     block: |
       export GO111MODULE=on
       export PATH=$PATH:/usr/lib/go-1.11/bin
