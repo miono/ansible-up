@@ -1,7 +1,12 @@
 ---
 - name: Install vim
   apt:
-    name: vim
+    name:
+      - vim
+      - cmake
+      - python-dev
+      - python3-dev
+
     state: latest
     update_cache: yes
 
