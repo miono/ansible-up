@@ -6,14 +6,6 @@
       - i3blocks
     update_cache: yes
 
-- name: Copy i3-configuration
-  copy:
-    src: files/i3-config
-    dest: "/home/{{ username }}/.config/i3/config"
-    mode: 0644
-    owner: "{{ username }}"
-    group: "{{ username }}"
-
 - name: Create folders for i3blocks configuration and i3blocks-scripts
   file:
     path: "/home/{{ username }}/.config/{{ item }}"
@@ -24,6 +16,14 @@
   with_items:
     - i3blocks
     - i3/i3blocks
+
+- name: Copy i3-configuration
+  copy:
+    src: files/i3-config
+    dest: "/home/{{ username }}/.config/i3/config"
+    mode: 0644
+    owner: "{{ username }}"
+    group: "{{ username }}"
 
 - name: Copy i3blocks configuration
   copy:
