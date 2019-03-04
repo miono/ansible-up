@@ -4,13 +4,13 @@ case $1 in
   dock)
     export DISPLAY=:0
     sleep 1
-    xrandr --output eDP-1 --auto --output DP-2-2 --auto --right-of eDP-1 --output DP-2-1 --auto --right-of DP-2-2
+    xrandr --output eDP-1 --gamma 0.9:1.0:1.1 --auto --output DP-2-2 --auto --right-of eDP-1 --output DP-2-1 --auto --right-of DP-2-2
     setxkbmap -layout se -option caps:escape &
   ;;
   undock)
     export DISPLAY=:0
     sleep 1
-    xrandr --output eDP-1 --auto --output DP-2-1 --off --output DP-2-2 --off
+    xrandr --output eDP-1 --gamma 0.9:1.0:1.1 --auto --output DP-2-1 --off --output DP-2-2 --off
     setxkbmap -layout se -option caps:escape &
   ;;
 esac
