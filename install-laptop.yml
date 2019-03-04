@@ -16,4 +16,4 @@
     - chrome
     - yubico-repo
     - vim
-#     - thinkpad-stuff # This should contain some xbindkeys-stuff for volume and shit
+    - thinkpad-stuff
