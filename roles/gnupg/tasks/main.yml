@@ -28,5 +28,5 @@
     path: "/home/{{ username }}/.bashrc"
     marker: "# {mark} GPG-AGENT STUFF FROM ANSIBLE"
     block: |
-      export SSH_AUTH_SOCK=~/.gnupg/S.gpg-agent.ssh
+      export SSH_AUTH_SOCK=/run/user/{{ uid }}/S.gpg-agent.ssh
       export GPG_TTY=$(tty)
