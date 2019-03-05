@@ -15,5 +15,6 @@
     marker: "# {mark} ANSIBLE-MANAGED GOLANG-STUFF"
     block: |
       export GO111MODULE=on
+      export GOROOT=/usr/lib/go-1.11
       export PATH=$PATH:/usr/lib/go-1.11/bin:/home/{{ username }}/go/bin
 
