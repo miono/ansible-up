@@ -18,3 +18,7 @@
       export GOROOT=/usr/lib/go-1.11
       export PATH=$PATH:/usr/lib/go-1.11/bin:/home/{{ username }}/go/bin
 
+- name: Update alternatives to get link in /usr/bin
+  alternatives:
+    name: go
+    path: /usr/lib/go-1.11/bin/go
