@@ -20,5 +20,6 @@
 
 - name: Update alternatives to get link in /usr/bin
   alternatives:
+    link: /usr/bin/go
     name: go
     path: /usr/lib/go-1.11/bin/go
