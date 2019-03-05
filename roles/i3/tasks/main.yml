@@ -32,10 +32,3 @@
     mode: 0644
     owner: "{{ username }}"
     group: "{{ username }}"
-
-- name: Copy i3blocks utility scripts
-  copy:
-    src: "files/i3blocks/{{ item }}"
-    dest: "/home/{{ username }}/.config/i3/i3blocks/{{ item }}"
-  with_items:
-    - i3_spotify
