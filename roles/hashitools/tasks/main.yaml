@@ -39,9 +39,9 @@
     creates: /opt/{{ item.name }}/{{ item.version }}/{{ item.name }}
   loop: '{{ hashitools_selection }}'
 
-- name: Symlink Hashitools to /usr/local/bin
+- name: Symlink Versioned Hashitools to /usr/local/bin
   ansible.builtin.file:
     src: /opt/{{ item.name }}/{{ item.version }}/{{ item.name }}
-    dest: /usr/local/bin/{{ item.name }}
+    dest: /usr/local/bin/{{ item.name }}-{{ item.version }}
     state: link
   loop: '{{ hashitools_selection }}'
