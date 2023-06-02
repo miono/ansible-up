@@ -7,8 +7,8 @@
     - packages
     - thirdparty
     - yubikey
+    - golang
 #    - bashrc
-#    - golang
 #    - spotify
 #    - keymap
 #    - i3

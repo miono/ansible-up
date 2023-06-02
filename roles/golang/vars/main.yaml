@@ -1,0 +1,7 @@
+---
+
+golang_basedir: /opt/golang
+golang_installdir: '{{ golang_basedir }}/{{ golang_version.number }}'
+
+golang_remoteurl: https://dl.google.com/go/go{{ golang_version.number }}.linux-amd64.tar.gz
+golang_localtar: '{{ basics_cachedir }}/go{{ golang_version.number }}.linux-amd64.tar.gz'

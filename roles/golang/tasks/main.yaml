@@ -1,0 +1,46 @@
+---
+
+- name: Download Go {{ golang_version.number }}
+  ansible.builtin.get_url:
+    url: '{{ golang_remoteurl }}'
+    dest: '{{ golang_localtar }}'
+    checksum: sha256:{{ golang_version.sha256 }}
+    owner: root
+    group: root
+    mode: 0444
+
+- name: Create golang {{ golang_version.number }} install dir
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  loop:
+    - '{{ golang_basedir }}'
+    - '{{ golang_installdir }}'
+
+- name: Install golang {{ golang_version.number }}
+  ansible.builtin.unarchive: # noqa 208
+    remote_src: True
+    src: '{{ golang_localtar }}'
+    dest: '{{ golang_installdir }}'
+    owner: root
+    group: root
+    extra_opts:
+      - --strip-components=1
+    creates: '{{ golang_installdir }}/bin/go'
+
+- name: Provide golang {{ golang_version.number }} environment
+  ansible.builtin.template:
+    src: profileenv.sh.j2
+    dest: /etc/profile.d/mygolang.sh
+    owner: root
+    group: root
+    mode: 0444
+
+- name: Install Emacs golang mode
+  ansible.builtin.apt:
+    name: elpa-go-mode
+    install_recommends: no
+    state: present
