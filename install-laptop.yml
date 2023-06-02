@@ -5,6 +5,7 @@
     - basics
     - apt
     - packages
+    - thirdparty
 #    - bashrc
 #    - golang
 #    - spotify
