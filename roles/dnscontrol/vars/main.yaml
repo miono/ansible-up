@@ -1,0 +1,8 @@
+---
+
+dnscontrol_basedir: /opt/dnscontrol
+dnscontrol_installdir: '{{ dnscontrol_basedir }}/{{ dnscontrol_release.version }}'
+dnscontrol_binary: '{{ dnscontrol_installdir }}/dnscontrol'
+
+dnscontrol_remoteurl: https://github.com/StackExchange/dnscontrol/releases/download/v{{ dnscontrol_release.version }}/dnscontrol_{{ dnscontrol_release.version }}_linux_amd64.tar.gz
+dnscontrol_localtargz: '{{ basics_cachedir }}/dnscontrol_{{ dnscontrol_release.version }}_linux_amd64.tar.gz'

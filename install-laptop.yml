@@ -10,6 +10,7 @@
     - golang
     - hashitools
     - terraform-docs
+    - dnscontrol
 #    - bashrc
 #    - keymap
 #    - i3

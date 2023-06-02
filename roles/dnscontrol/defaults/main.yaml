@@ -1,0 +1,5 @@
+---
+
+dnscontrol_release:
+  version: 4.1.0
+  sha256: 968ec15dae4863d5079c72da89a7f5998c2e559b230e55a32158714821b6255b

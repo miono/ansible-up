@@ -1,0 +1,36 @@
+---
+
+- name: Create DNSControl {{ dnscontrol_release.version }} install dir
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  loop:
+    - '{{ dnscontrol_basedir }}'
+    - '{{ dnscontrol_installdir }}'
+
+- name: Download DNSControl {{ dnscontrol_release.version }}
+  ansible.builtin.get_url:
+    url: '{{ dnscontrol_remoteurl }}'
+    dest: '{{ dnscontrol_localtargz }}'
+    checksum: sha256:{{ dnscontrol_release.sha256 }}
+    owner: root
+    group: root
+    mode: 0555
+
+- name: Install DNSControl {{ dnscontrol_release.version }}
+  ansible.builtin.unarchive:
+    remote_src: True
+    src: '{{ dnscontrol_localtargz }}'
+    dest: '{{ dnscontrol_installdir }}'
+    owner: root
+    group: root
+    creates: '{{ dnscontrol_binary }}'
+
+- name: Set DNSControl {{ dnscontrol_release.version }} /usr/local/bin symlink
+  ansible.builtin.file:
+    src: '{{ dnscontrol_binary }}'
+    dest: /usr/local/bin/dnscontrol
+    state: link
