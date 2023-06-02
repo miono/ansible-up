@@ -4,6 +4,7 @@
   roles:
     - basics
     - apt
+    - packages
 #    - bashrc
 #    - golang
 #    - spotify

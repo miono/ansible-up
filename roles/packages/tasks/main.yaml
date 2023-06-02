@@ -1,0 +1,21 @@
+---
+
+- name: Install all the nice stuff
+  ansible.builtin.apt:
+    name:
+      - bind9utils
+      - cloudsql-proxy
+      - curl
+      - direnv
+      - git
+      - ipcalc
+      - jq
+      - keepassxc
+      - pwgen
+      - python3-dev
+      - python3-venv
+      - shellcheck
+      - vim
+      - whois
+      - yq
+    state: present
