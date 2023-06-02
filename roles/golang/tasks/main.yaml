@@ -38,9 +38,3 @@
     owner: root
     group: root
     mode: 0444
-
-- name: Install Emacs golang mode
-  ansible.builtin.apt:
-    name: elpa-go-mode
-    install_recommends: no
-    state: present
