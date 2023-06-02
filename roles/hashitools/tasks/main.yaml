@@ -1,0 +1,47 @@
+---
+
+- name: Download Hashicorp Tools
+  ansible.builtin.get_url:
+    url: '{{ hashitools_baseurl }}/{{ item.name }}/{{ item.version }}/{{ item.name }}_{{ item.version }}_linux_amd64.zip'
+    dest: '{{ basics_cachedir }}/{{ item.name }}_{{ item.version }}_linux_amd64.zip'
+    checksum: sha256:{{ item.sha256 }}
+    owner: root
+    group: root
+    mode: 0444
+  loop: '{{ hashitools_selection }}'
+
+- name: Hashitools base directories
+  ansible.builtin.file:
+    path: /opt/{{ item.name }}
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  loop: '{{ hashitools_selection }}'
+
+- name: Hashitools install directories
+  ansible.builtin.file:
+    path: /opt/{{ item.name }}/{{ item.version }}
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  loop: '{{ hashitools_selection }}'
+
+- name: Extract Hashitools
+  ansible.builtin.unarchive:
+    remote_src: True
+    src: '{{ basics_cachedir }}/{{ item.name }}_{{ item.version }}_linux_amd64.zip'
+    dest: /opt/{{ item.name }}/{{ item.version }}
+    owner: root
+    group: root
+    mode: 0555
+    creates: /opt/{{ item.name }}/{{ item.version }}/{{ item.name }}
+  loop: '{{ hashitools_selection }}'
+
+- name: Symlink Hashitools to /usr/local/bin
+  ansible.builtin.file:
+    src: /opt/{{ item.name }}/{{ item.version }}/{{ item.name }}
+    dest: /usr/local/bin/{{ item.name }}
+    state: link
+  loop: '{{ hashitools_selection }}'
