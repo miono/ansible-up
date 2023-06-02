@@ -1,0 +1,7 @@
+---
+
+tdocs_basedir: /opt/tdocs
+tdocs_installdir: '{{ tdocs_basedir }}/{{ tdocs_version.number }}'
+
+tdocs_remoteurl: https://github.com/terraform-docs/terraform-docs/releases/download/v{{ tdocs_version.number }}/terraform-docs-v{{ tdocs_version.number }}-linux-amd64.tar.gz
+tdocs_localtargz: '{{ basics_cachedir }}/terraform-docs-v{{ tdocs_version.number }}-linux-amd64.tar.gz'

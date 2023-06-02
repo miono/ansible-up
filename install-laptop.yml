@@ -9,6 +9,7 @@
     - yubikey
     - golang
     - hashitools
+    - terraform-docs
 #    - bashrc
 #    - spotify
 #    - keymap
