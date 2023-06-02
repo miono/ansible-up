@@ -1,0 +1,3 @@
+---
+
+yubikey_yubico_keyring_path: '{{ basics_keyringdir }}/yubico-ppa.gpg'

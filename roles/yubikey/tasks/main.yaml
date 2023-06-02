@@ -1,0 +1,46 @@
+---
+
+- name: Install Yubico PPA repo keyring
+  ansible.builtin.copy:
+    src: yubico-ppa.gpg
+    dest: '{{ yubikey_yubico_keyring_path }}'
+    owner: root
+    group: root
+    mode: 0444
+  register: reg_yubikey_yubico_repo_keyring
+
+- name: Install Yubico PPA repo source
+  ansible.builtin.template:
+    src: yubico-ppa.list.j2
+    dest: /etc/apt/sources.list.d/yubico-ppa.list
+    owner: root
+    group: root
+    mode: 0444
+  register: reg_yubikey_yubico_repo_list
+
+- name: Yubico PPA apt-get update
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install Yubikey related software
+  ansible.builtin.apt:
+    name:
+      - gpg-agent
+      - pcscd
+      - scdaemon
+      - fido2-tools
+      - yubikey-manager
+      - yubioath-desktop
+    state: latest
+
+- name: Enable pcscd socket
+  ansible.builtin.systemd:
+    name: pcscd.socket
+    enabled: yes
+
+- name: Gnome keyring sans ssh-agent
+  ansible.builtin.lineinfile:
+    path: /etc/xdg/autostart/gnome-keyring-ssh.desktop
+    regexp: '^X-GNOME-Autostart-enabled='
+    line: X-GNOME-Autostart-enabled=false
+    state: present
