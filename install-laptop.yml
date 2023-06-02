@@ -8,6 +8,7 @@
     - thirdparty
     - yubikey
     - golang
+    - hashitools
 #    - bashrc
 #    - spotify
 #    - keymap
