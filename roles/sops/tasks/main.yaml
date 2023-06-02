@@ -1,0 +1,15 @@
+---
+
+- name: Download sops {{ sops_release.version }}
+  ansible.builtin.get_url:
+    url: '{{ sops_remoteurl }}'
+    dest: '{{ sops_localdeb }}'
+    checksum: sha256:{{ sops_release.sha256 }}
+    owner: root
+    group: root
+    mode: 0444
+
+- name: Install sops {{ sops_release.version }}
+  ansible.builtin.apt:
+    deb: '{{ sops_localdeb }}'
+    state: present

@@ -1,0 +1,5 @@
+---
+
+sops_release:
+  version: 3.7.3
+  sha256: 3ef6368a083657fe3f5656a866756ef940579ac7ae471e9362bfda6814226c55

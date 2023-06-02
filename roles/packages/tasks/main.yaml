@@ -18,6 +18,7 @@
       - python3-virtualenv
       - shellcheck
       - sway
+      - tree
       - vim
       - whois
       - yq

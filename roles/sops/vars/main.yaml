@@ -1,0 +1,4 @@
+---
+
+sops_remoteurl: https://github.com/mozilla/sops/releases/download/v{{ sops_release.version }}/sops_{{ sops_release.version }}_amd64.deb
+sops_localdeb: '{{ basics_cachedir }}/sops_{{ sops_release.version }}_amd64.deb'
