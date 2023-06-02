@@ -7,8 +7,7 @@ if [[ $SUDO_USER == "" ]]; then
 	exit 1
 fi
 
-add-apt-repository -y ppa:ansible/ansible
-apt-get update
-apt install -y ansible
+export DEBIAN_FRONTEND=noninteractive
 
-sudo -u $SUDO_USER ansible-playbook install-laptop.yml -kKb -e username=$SUDO_USER -e uid=$(id -u $SUDO_USER)
+apt-get update --quiet
+apt-get install --yes ansible make
