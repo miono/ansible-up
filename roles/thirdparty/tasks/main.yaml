@@ -1,0 +1,62 @@
+---
+
+- name: Install third party repo keyrings
+  ansible.builtin.copy:
+    src: '{{ item.src }}'
+    dest: '{{ item.dest }}'
+    owner: root
+    group: root
+    mode: 0444
+  loop:
+    - src: docker.gpg
+      dest: '{{ thirdparty_docker_keyring_path }}'
+    - src: gcloud.gpg
+      dest: '{{ thirdparty_gcloud_keyring_path }}'
+    - src: google.gpg
+      dest: '{{ thirdparty_google_keyring_path }}'
+    - src: githubcli.gpg
+      dest: '{{ thirdparty_githubcli_keyring_path }}'
+    - src: gitlfs.gpg
+      dest: '{{ thirdparty_gitlfs_keyring_path }}'
+    - src: microsoft.gpg
+      dest: '{{ thirdparty_microsoft_keyring_path }}'
+    - src: spotify.gpg
+      dest: '{{ thirdparty_spotify_keyring_path }}'
+  register: reg_thirdparty_keyrings
+
+- name: Install third party repos
+  ansible.builtin.template:
+    src: '{{ item }}.j2'
+    dest: /etc/apt/sources.list.d/{{ item }}
+    owner: root
+    group: root
+    mode: 0444
+  loop:
+    - docker.list
+    - endpoint-verification.list
+    - gcloud.list
+    - google-chrome.list
+    - githubcli.list
+    - gitlfs.list
+    - vscode.list
+    - spotify.list
+  register: reg_thirdparty_lists
+
+- name: third party apt-get update
+  ansible.builtin.apt:
+    update_cache: yes
+    when: >
+      reg_thirdparty_keyrings is changed or
+      reg_thirdparty_lists is changed
+
+- name: Install third party software
+  ansible.builtin.apt:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - gh
+      - google-chrome-stable
+      - google-cloud-sdk
+      - google-cloud-sdk-gke-gcloud-auth-plugin
+      - kubectl
+    state: latest
