@@ -3,7 +3,6 @@
 thirdparty_docker_keyring_path: '{{ basics_keyringdir }}/docker.gpg'
 thirdparty_gcloud_keyring_path: '{{ basics_keyringdir }}/gcloud.gpg'
 thirdparty_githubcli_keyring_path: '{{ basics_keyringdir }}/githubcli.gpg'
-thirdparty_gitlfs_keyring_path: '{{ basics_keyringdir }}/gitlfs.gpg'
 thirdparty_google_keyring_path: '{{ basics_keyringdir }}/google.gpg'
 thirdparty_microsoft_keyring_path: '{{ basics_keyringdir }}/microsoft.gpg'
 thirdparty_spotify_keyring_path: '{{ basics_keyringdir }}/spotify.gpg'

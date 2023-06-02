@@ -16,8 +16,6 @@
       dest: '{{ thirdparty_google_keyring_path }}'
     - src: githubcli.gpg
       dest: '{{ thirdparty_githubcli_keyring_path }}'
-    - src: gitlfs.gpg
-      dest: '{{ thirdparty_gitlfs_keyring_path }}'
     - src: microsoft.gpg
       dest: '{{ thirdparty_microsoft_keyring_path }}'
     - src: spotify.gpg
@@ -37,7 +35,6 @@
     - gcloud.list
     - google-chrome.list
     - githubcli.list
-    - gitlfs.list
     - vscode.list
     - spotify.list
   register: reg_thirdparty_lists

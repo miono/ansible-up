@@ -8,6 +8,7 @@
       - curl
       - direnv
       - git
+      - git-lfs
       - ipcalc
       - jq
       - keepassxc
