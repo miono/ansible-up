@@ -45,9 +45,9 @@
 - name: third party apt-get update
   ansible.builtin.apt:
     update_cache: yes
-    when: >
-      reg_thirdparty_keyrings is changed or
-      reg_thirdparty_lists is changed
+  when: >
+    reg_thirdparty_keyrings is changed or
+    reg_thirdparty_lists is changed
 
 - name: Install third party software
   ansible.builtin.apt:
