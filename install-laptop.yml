@@ -1,6 +1,8 @@
 ---
-- hosts: localhost
+- hosts: laima
+  become: yes
   roles:
+    - basics
     - bashrc
     - golang
     - spotify

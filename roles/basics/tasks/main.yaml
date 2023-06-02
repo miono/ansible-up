@@ -1,0 +1,23 @@
+---
+
+- name: Create playbook cachedir
+  ansible.builtin.file:
+    path: '{{ basics_cachedir }}'
+    state: directory
+    owner: root
+    group: root
+    mode: 0751
+
+- name: Create (gpg) keyring directory
+  ansible.builtin.file:
+    path: '{{ basics_keyringdir }}'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Protect {{ common_useruser }} home directory
+  ansible.builtin.file:
+    path: ~{{ common_useruser }}
+    state: directory
+    mode: 0750

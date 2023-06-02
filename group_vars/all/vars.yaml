@@ -1,0 +1,6 @@
+---
+
+basics_cachedir: /var/cache/playbook
+basics_keyringdir: /usr/local/share/keyrings
+
+common_useruser: miono
