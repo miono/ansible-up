@@ -26,3 +26,9 @@
   ansible.builtin.pip:
     name: aws-google-auth
     virtualenv: /opt/aws-google-auth
+
+- name: Symlink aws-google-auth
+  ansible.builtin.file:
+    src: /opt/aws-google-auth/bin/aws-google-auth
+    dest: /usr/local/bin/aws-google-auth
+    state: link
