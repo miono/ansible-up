@@ -1,0 +1,26 @@
+---
+
+- name: Define main sources.list
+  ansible.builtin.template:
+    src: sources.list.j2
+    dest: /etc/apt/sources.list
+    owner: root
+    group: root
+    mode: 0444
+  register: reg_apt_sources
+
+- name: sources.list apt-get update
+  ansible.builtin.apt:
+    update_cache: yes
+  when: >
+    reg_apt_sources is changed
+
+- name: Install apt-file
+  ansible.builtin.apt:
+    name: apt-file
+    state: present
+  register: reg_apt_file_install
+
+- name: Bootstrap apt-file
+  ansible.builtin.command: apt-file update
+  when: reg_apt_file_install is changed

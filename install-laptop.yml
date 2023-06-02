@@ -3,6 +3,7 @@
   become: yes
   roles:
     - basics
+    - apt
 #    - bashrc
 #    - golang
 #    - spotify
