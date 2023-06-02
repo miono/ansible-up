@@ -3,19 +3,19 @@
   become: yes
   roles:
     - basics
-    - bashrc
-    - golang
-    - spotify
-    - keymap
-    - i3
-    - gitprompt
-    - gnupg
-    - keepassxc
-    - font-rendering
-    - vscode
-    - docker
-    - virtualbox
-    - chrome
-    - yubico-repo
-    - vim
-    - thinkpad-stuff
+#    - bashrc
+#    - golang
+#    - spotify
+#    - keymap
+#    - i3
+#    - gitprompt
+#    - gnupg
+#    - keepassxc
+#    - font-rendering
+#    - vscode
+#    - docker
+#    - virtualbox
+#    - chrome
+#    - yubico-repo
+#    - vim
+#    - thinkpad-stuff
