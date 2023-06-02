@@ -12,6 +12,7 @@
     - terraform-docs
     - dnscontrol
     - sops
+    - 1password
 #    - bashrc
 #    - keymap
 #    - i3

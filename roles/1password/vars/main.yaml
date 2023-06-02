@@ -1,0 +1,11 @@
+---
+
+onepassword_repo_keyring_path: '{{ basics_keyringdir }}/1password.gpg'
+
+onepassword_cli_basedir: /opt/1password-cli
+onepassword_cli_installdir: '{{ onepassword_cli_basedir }}/{{ onepassword_cli_version.number }}'
+
+onepassword_cli_remoteurl: https://cache.agilebits.com/dist/1P/op/pkg/v{{ onepassword_cli_version.number }}/op_linux_amd64_v{{ onepassword_cli_version.number }}.zip
+onepassword_cli_localzip: '{{ basics_cachedir }}/op_linux_amd64_v{{ onepassword_cli_version.number }}.zip'
+
+onepassword_cli_binary: '{{ onepassword_cli_installdir }}/op'

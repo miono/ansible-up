@@ -1,0 +1,71 @@
+---
+
+- name: Install 1password repo keyring
+  ansible.builtin.copy:
+    src: 1password.gpg
+    dest: '{{ onepassword_repo_keyring_path }}'
+    owner: root
+    group: root
+    mode: 0444
+  register: reg_onepassword_repo_keyring
+
+- name: Install 1password repo source
+  ansible.builtin.template:
+    src: 1password.list.j2
+    dest: /etc/apt/sources.list.d/1password.list
+    owner: root
+    group: root
+    mode: 0444
+  register: reg_onepassword_repo_list
+
+- name: 1password apt-get update
+  ansible.builtin.apt:
+    update_cache: yes
+  when: >
+    reg_onepassword_repo_keyring is changed or
+    reg_onepassword_repo_list is changed
+
+- name: Install third party software
+  ansible.builtin.apt:
+    name:
+      - 1password
+    state: latest
+
+- name: Download 1Password CLI {{ onepassword_cli_version.number }}
+  ansible.builtin.get_url:
+    url: '{{ onepassword_cli_remoteurl }}'
+    dest: '{{ onepassword_cli_localzip }}'
+    checksum: sha256:{{ onepassword_cli_version.sha256 }}
+    owner: root
+    group: root
+    mode: 0444
+
+- name: Create 1Password CLI {{ onepassword_cli_version.number }} install dir
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  loop:
+    - '{{ onepassword_cli_basedir }}'
+    - '{{ onepassword_cli_installdir }}'
+
+- name: Unzip 1Password CLI {{ onepassword_cli_version.number }}
+  ansible.builtin.command:
+    cmd: unzip {{ onepassword_cli_localzip }}
+    chdir: '{{ onepassword_cli_installdir }}'
+    creates: '{{ onepassword_cli_binary }}'
+
+- name: Ensure 1Password CLI {{ onepassword_cli_version.number }} file permission
+  ansible.builtin.file:
+    path: '{{ onepassword_cli_binary }}'
+    owner: root
+    group: root
+    mode: 0555
+
+- name: Set 1Password CLI {{ onepassword_cli_version.number }} symlink
+  ansible.builtin.file:
+    state: link
+    src: '{{ onepassword_cli_binary }}'
+    dest: /usr/local/bin/op
