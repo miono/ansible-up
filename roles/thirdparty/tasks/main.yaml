@@ -57,3 +57,9 @@
       - kubectl
       - spotify-client
     state: latest
+
+- name: Add {{ common_useruser }} to docker group
+  ansible.builtin.user:
+    name: '{{ common_useruser }}'
+    append: yes
+    groups: docker
