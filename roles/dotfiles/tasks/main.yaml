@@ -1,12 +1,12 @@
 ---
 
-- name: Copy the xkb-symbols files to the right place
+- name: Copy keymaps
   copy:
     src: "{{ item }}"
     dest: "/usr/share/X11/xkb/symbols/{{ item }}"
     owner: root
     group: root
     mode: 0644
-  with_items:
+  loop:
     - se
     - gb

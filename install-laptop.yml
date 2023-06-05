@@ -13,6 +13,7 @@
     - dnscontrol
     - sops
     - 1password
+    - dotfiles
 #    - bashrc
 #    - keymap
 #    - i3

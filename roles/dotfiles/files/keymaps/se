@@ -32,7 +32,6 @@ xkb_symbols "se" {
 
     key <AC10>	{ [odiaeresis, Odiaeresis,       oslash,     Ooblique ]	};
     key <AC11>	{ [adiaeresis, Adiaeresis,           ae,           AE ]	};
-    key <TLDE>	{ [   section,    onehalf,    paragraph, threequarters]	};
 
     key <BKSL>	{ [apostrophe,   asterisk,        acute,     multiply ]	};
 
