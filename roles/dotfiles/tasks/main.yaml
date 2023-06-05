@@ -2,7 +2,7 @@
 
 - name: Copy keymaps
   ansible.builtin.copy:
-    src: "keymap/{{ item }}"
+    src: "keymaps/{{ item }}"
     dest: "/usr/share/X11/xkb/symbols/{{ item }}"
     owner: root
     group: root
