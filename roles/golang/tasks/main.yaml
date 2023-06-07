@@ -33,8 +33,8 @@
 
 - name: Provide golang {{ golang_version.number }} environment
   ansible.builtin.template:
-    src: profileenv.sh.j2
-    dest: /etc/profile.d/mygolang.sh
-    owner: root
-    group: root
+    src: golang.bashrc.j2
+    dest: /home/{{ common_useruser }}/.bashrc.d/golang.bashrc
+    owner: "{{ common_useruser }}"
+    group: "{{ common_useruser }}"
     mode: 0444
