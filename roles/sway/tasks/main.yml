@@ -1,0 +1,10 @@
+---
+- name: Install needed packages
+  ansible.builtin.apt:
+    name:
+      - swaylock
+    state: present
+
+# - name: Add configuration files
+#
+#
