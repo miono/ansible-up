@@ -22,7 +22,7 @@
     - vi-mode.bashrc
     - direnv.bashrc
 
-- name: Source .bashrc.d content
+- name: Add sourcing of .bashrc.d content
   ansible.builtin.blockinfile:
     path: "/home/{{ common_useruser }}/.bashrc"
     block: |
