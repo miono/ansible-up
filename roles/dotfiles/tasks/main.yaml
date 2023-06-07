@@ -29,6 +29,6 @@
     owner: "{{ common_useruser }}"
     group: "{{ common_useruser }}"
   loop:
-    - { src: "bashrc.d/vi-mode.bashrc", dest: "~/.bashrc.d/vi-mode.bashrc" }
-    - { src: "bashrc.d/direnv.bashrc", dest: "~/.bashrc.d/direnv.bashrc" }
+    - { src: "bashrc.d/vi-mode.bashrc", dest: "/home/{{ common_useruser }}/.bashrc.d/vi-mode.bashrc" }
+    - { src: "bashrc.d/direnv.bashrc", dest: "/home/{{ common_useruser }}/.bashrc.d/direnv.bashrc" }
     
