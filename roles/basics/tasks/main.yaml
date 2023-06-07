@@ -28,4 +28,4 @@
     state: directory
     owner: "{{ common_useruser }}"
     group: "{{ common_useruser }}"
-    mode: 0555
+    mode: 0755
