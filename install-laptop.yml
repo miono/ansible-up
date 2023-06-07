@@ -13,11 +13,11 @@
     - dnscontrol
     - sops
     - 1password
+    - gitprompt
     - dotfiles
 #    - bashrc
 #    - keymap
 #    - i3
-#    - gitprompt
 #    - gnupg
 #    - virtualbox
 #    - vim
