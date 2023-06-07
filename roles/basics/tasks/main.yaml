@@ -21,3 +21,11 @@
     path: ~{{ common_useruser }}
     state: directory
     mode: 0750
+
+- name: Create .bashrc.d folder
+  ansible.builtin.file:
+    dest: "/home/{{ common_useruser }}/.bashrc.d"
+    state: directory
+    owner: "{{ common_useruser }}"
+    group: "{{ common_useruser }}"
+    mode: 0555

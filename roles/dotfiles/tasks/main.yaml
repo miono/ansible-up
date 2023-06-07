@@ -11,23 +11,6 @@
     - se
     - gb
 
-- name: Create .bashrc.d folder
-  ansible.builtin.file:
-    dest: "/home/{{ common_useruser }}/.bashrc.d"
-    state: directory
-    owner: "{{ common_useruser }}"
-    group: "{{ common_useruser }}"
-    mode: 0555
-
-- name: Source .bashrc.d content
-  ansible.builtin.blockinfile:
-    path: "/home/{{ common_useruser }}/.bashrc"
-    block: |
-      for file in ~/.bashrc.d/*.bashrc
-      do
-        source "$file"
-      done
-
 - name: Copy bashrc-additions
   ansible.builtin.copy:
     src: "bashrc.d/{{ item }}"
@@ -39,3 +22,11 @@
     - vi-mode.bashrc
     - direnv.bashrc
 
+- name: Source .bashrc.d content
+  ansible.builtin.blockinfile:
+    path: "/home/{{ common_useruser }}/.bashrc"
+    block: |
+      for file in ~/.bashrc.d/*.bashrc
+      do
+        source "$file"
+      done
