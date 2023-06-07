@@ -20,9 +20,13 @@
     mode: 0555
 
 - name: Source .bashrc.d content
-  ansible.builtin.lineinfile:
+  ansible.builtin.blockinfile:
     path: "/home/{{ common_useruser }}/.bashrc"
-    line: source ~/.bashrc.d/*.bashrc
+    block: |
+      for file in ~/.bashrc.d/*.bashrc
+      do
+        source "$file"
+      done
 
 - name: Copy bashrc-additions
   ansible.builtin.copy:
