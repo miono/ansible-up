@@ -11,16 +11,6 @@
     - se
     - gb
 
-- name: Copy bashrc-additions
-  ansible.builtin.copy:
-    src: "bashrc.d/{{ item }}"
-    dest: "/home/{{ common_useruser }}/.bashrc.d/{{ item }}"
-    owner: "{{ common_useruser }}"
-    group: "{{ common_useruser }}"
-    mode: 0444
-  loop:
-    - vi-mode.bashrc
-    - direnv.bashrc
 
 - name: Add sourcing of .bashrc.d content
   ansible.builtin.blockinfile:
@@ -30,3 +20,15 @@
       do
         source "$file"
       done
+
+- name: Copy a bunch of dotfiles
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: '{{ item.mode | default("0444") }}'
+    owner: "{{ common_useruser }}"
+    group: "{{ common_useruser }}"
+  loop:
+    - { src: "bashrc.d/vi-mode.bashrc", dest: "~/.bashrc.d/vi-mode.bashrc" }
+    - { src: "bashrc.d/direnv.bashrc", dest: "~/.bashrc.d/direnv.bashrc" }
+    
