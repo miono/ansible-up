@@ -39,6 +39,7 @@
   loop:
     - { src: "bashrc.d/direnv.bashrc", dest: "/home/{{ common_useruser }}/.bashrc.d/direnv.bashrc" }
     - { src: "bashrc.d/kubectl.bashrc", dest: "/home/{{ common_useruser }}/.bashrc.d/kubectl.bashrc" }
+    - { src: "bashrc.d/termtitle.bashrc", dest: "/home/{{ common_useruser }}/.bashrc.d/termtitle.bashrc" }
     - { src: "bashrc.d/vi-mode.bashrc", dest: "/home/{{ common_useruser }}/.bashrc.d/vi-mode.bashrc" }
     - { src: "bashrc.d/gnupg.bashrc", dest: "/home/{{ common_useruser }}/.bashrc.d/gnupg.bashrc" }
     - { src: "gnupg/gpg-agent.conf", dest: "/home/{{ common_useruser }}/.gnupg/gpg-agent.conf" }

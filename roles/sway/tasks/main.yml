@@ -2,7 +2,8 @@
 - name: Install needed packages
   ansible.builtin.apt:
     name:
-      - swaylock
+      - swaylock # For locking screen
+      - xdg-desktop-portal-wlr # For sharing screen in meet etc
     state: present
 
 # - name: Add configuration files
