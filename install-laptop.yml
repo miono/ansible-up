@@ -14,5 +14,6 @@
 #    - sops
 #    - 1password
 #    - gitprompt
-    - dotfiles
-    - sway
+#   - dotfiles
+#   - sway
+    - pyenv

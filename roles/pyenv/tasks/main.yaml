@@ -1,0 +1,46 @@
+---
+
+- name: Install pyenv dependencies
+  ansible.builtin.apt:
+    name:
+      - build-essential
+      - libbz2-dev
+      - libssl-dev
+      - zlib1g-dev
+      - zlib1g-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libncursesw5-dev
+      - tk-dev
+      - libxml2-dev
+      - libxmlsec1-dev
+      - libffi-dev
+      - liblzma-dev
+    install_recommends: false
+
+- name: Get pyenv repository
+  ansible.builtin.git:
+    repo: https://github.com/pyenv/pyenv.git
+    dest: '{{ pyenv_installdir }}'
+    update: false
+
+- name: Generate pyenv Makefile
+  ansible.builtin.command:
+    chdir: '{{ pyenv_installdir }}'
+    cmd: src/configure
+    creates: '{{ pyenv_installdir }}/src/Makefile'
+
+- name: Pre-compile pyenv dynamic extension
+  ansible.builtin.command:
+    chdir: '{{ pyenv_installdir }}'
+    argv:
+      - make
+      - -C
+      - src
+    creates: '{{ pyenv_installdir }}/libexec/pyenv-realpath.dylib'
+
+- name: Setup /usr/local/bin pyenv symlink
+  ansible.builtin.file:
+    src: '{{ pyenv_installdir }}/libexec/pyenv'
+    dest: /usr/local/bin/pyenv
+    state: link
