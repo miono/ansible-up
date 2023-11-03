@@ -2,18 +2,18 @@
 - hosts: laima
   become: yes
   roles:
-#    - basics
-#    - apt
-#    - packages
-#    - thirdparty
-#    - yubikey
-#    - golang
-#    - hashitools
-#    - terraform-docs
-#    - dnscontrol
-#    - sops
-#    - 1password
-#    - gitprompt
-#   - dotfiles
-#   - sway
+    - basics
+    - apt
+    - packages
+    - thirdparty
+    - yubikey
+    - golang
+    - hashitools
+    - terraform-docs
+    - dnscontrol
+    - sops
+    - 1password
+    - gitprompt
+    - dotfiles
+    - sway
     - pyenv
